@@ -21,13 +21,53 @@ public class Cotizacion extends Documento{
         super(id, fecha);
         this.cantidad = cantidad;
         this.descuento = descuento;
+        
+        
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public float getDescuento() {
+        return descuento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setDescuento(float descuento) {
+        this.descuento = descuento;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
     
     
 
     @Override
     public void imprimir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            System.out.println("Cotizacion");
+            System.out.println(super.toString());
+            System.out.println(toString());
+        }
+
+    @Override
+    public String toString() {
+        return "Cotizacion{" + "cantidad=" + cantidad + ", descuento=" + descuento + '}';
     }
-    
 }
