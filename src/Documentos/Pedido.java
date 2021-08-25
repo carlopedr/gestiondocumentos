@@ -6,60 +6,61 @@
 package Documentos;
 
 import Basicos.Documento;
+import Basicos.Organizacion;
 import Basicos.Persona;
 import Basicos.Producto;
 import java.util.Date;
 
 /**
  *
- * @author Usuario
+ * @author Libardo
  */
 public class Pedido extends Documento{
-    protected Persona proveedor;
-    protected Producto producto;
-    protected int cantidad;
+    private int numero;
+    private Organizacion proveedor;
+    protected Persona vendedor;
+    private float valor;
+    private Date fechaFac;
+    private float descuentos;
+    private float impuestos;
 
-    public Pedido(Persona proveedor, Producto producto, int cantidad, int id, Date fecha) {
+    public Pedido(int numero, Organizacion proveedor, Persona vendedor, float valor, Date fechaFac, float descuentos, float impuestos, int id, Date fecha) {
         super(id, fecha);
+        this.numero = numero;
         this.proveedor = proveedor;
-        this.producto = producto;
-        this.cantidad = cantidad;
+        this.vendedor = vendedor;
+        this.valor = valor;
+        this.fechaFac = fechaFac;
+        this.descuentos = descuentos;
+        this.impuestos = impuestos;
     }
 
-    public void setProveedor(Persona proveedor) {
-        this.proveedor = proveedor;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Pedido(int id, Date fecha) {
-        super(id, fecha);
-    }
-
-    public Persona getProveedor() {
+    public Organizacion getProveedor() {
         return proveedor;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Persona getVendedor() {
+        return vendedor;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public float getValor() {
+        return valor;
+    }
+
+    public Date getFechaFac() {
+        return fechaFac;
+    }
+
+    public float getDescuentos() {
+        return descuentos;
+    }
+
+    public float getImpuestos() {
+        return impuestos;
     }
 
     public int getId() {
@@ -70,9 +71,48 @@ public class Pedido extends Documento{
         return fecha;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setProveedor(Organizacion proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public void setVendedor(Persona vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public void setFechaFac(Date fechaFac) {
+        this.fechaFac = fechaFac;
+    }
+
+    public void setDescuentos(float descuentos) {
+        this.descuentos = descuentos;
+    }
+
+    public void setImpuestos(float impuestos) {
+        this.impuestos = impuestos;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    
     @Override
     public void imprimir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   
     
+
 }

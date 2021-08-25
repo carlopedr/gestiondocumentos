@@ -5,10 +5,28 @@
  */
 package Basicos;
 
+import java.util.Date;
+
 /**
  *
- * @author Usuario
+ * @author Juan Diego Coronado
  */
 public class Organizacion {
+    private int id;
+    private String nombre;
+    private Persona repLegal;
+    private String direccion;
+    private String email;
+    private Date fecha_creacion;
+    private String tipo;
+
+    public Organizacion() {
+    }
+
+    
+    
+    
+    
+    
     
 }

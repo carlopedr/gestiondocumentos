@@ -12,8 +12,8 @@ import java.util.Date;
  * @author Usuario
  */
 public abstract class Documento {
-    protected int id;
-    protected Date fecha;
+    protected int id; //Consecutivo
+    protected Date fecha; //Fecha de registro
 
     public Documento(int id, Date fecha) {
         this.id = id;

@@ -1,33 +1,38 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * KevixTo change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Documentos;
 
 import Basicos.Documento;
+import Basicos.Organizacion;
+import Basicos.Persona;
 import java.util.Date;
 
 /**
  *
- * @author Usuario
+ * @author Kevin
  */
 public class Cotizacion extends Documento{
     
-    private int cantidad;
-    private float descuento;
+    private int numero; //# Cotización
+    private Organizacion empresa;
+    private Persona interesado;
+    private float valor;
+    private Date fechaCot;
+    private float descuentos;
+    private float impuestos;
 
-    public Cotizacion(int cantidad, float descuento, int id, Date fecha) {
+    public Cotizacion(int id, Date fecha) {
         super(id, fecha);
-        this.cantidad = cantidad;
-        this.descuento = descuento;
     }
-    
-    
 
     @Override
     public void imprimir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 }

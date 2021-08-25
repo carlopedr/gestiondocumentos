@@ -6,14 +6,21 @@
 package Documentos.RRHH;
 
 import Basicos.Documento;
+import Basicos.Persona;
 import java.util.Date;
 
 /**
  *
- * @author Usuario
+ * @author Anderson
  */
 public class Contrato extends Documento{
-
+    protected Persona empleado;
+    protected String cargo;
+    protected double sueldo;
+    protected Date fechaIngreso;
+    protected String tipoContrato;
+    protected Date fechaVence;
+    
     public Contrato(int id, Date fecha) {
         super(id, fecha);
     }

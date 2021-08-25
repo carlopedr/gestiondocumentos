@@ -5,6 +5,8 @@
  */
 package Basicos;
 
+import java.util.Date;
+
 /**
  *
  * @author Usuario
@@ -13,11 +15,21 @@ public class Persona {
     private double id;
     private String nombre;
     private String email;
+    private Date fechaNacimiento;
+    private String direccion;
+    private Organizacion eps;
+    
 
-    public Persona(double id, String nombre, String email) {
+    public Persona() {
+    }
+
+    public Persona(double id, String nombre, String email, Date fechaNacimiento, String direccion, Organizacion eps) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.eps = eps;
     }
 
     public double getId() {
@@ -32,6 +44,18 @@ public class Persona {
         return email;
     }
 
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Organizacion getEps() {
+        return eps;
+    }
+
     public void setId(double id) {
         this.id = id;
     }
@@ -44,9 +68,31 @@ public class Persona {
         this.email = email;
     }
 
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setEps(Organizacion eps) {
+        this.eps = eps;
+    }
+
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Persona{id=").append(id);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", email=").append(email);
+        sb.append(", fechaNacimiento=").append(fechaNacimiento);
+        sb.append(", direccion=").append(direccion);
+        sb.append(", eps=").append(eps);
+        sb.append('}');
+        return sb.toString();
     }
+
+  
         
 }

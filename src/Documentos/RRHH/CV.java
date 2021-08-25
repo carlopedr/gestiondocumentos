@@ -6,6 +6,7 @@
 package Documentos.RRHH;
 
 import Basicos.Documento;
+import Basicos.Organizacion;
 import Basicos.Persona;
 import java.util.Date;
 
@@ -15,13 +16,17 @@ import java.util.Date;
  */
 public class CV extends Documento { 
     private Persona persona;
-    private String profecion;
+    private String profesion;
     private String ocupacion;
+    private int mesesExp;
+    private String nivelEd;
+    private Organizacion ultimaEmpresa;
+    private Date fechaRetiro;
 
     public CV(Persona persona, String profecion, String ocupacion, int id, Date fecha) {
         super(id, fecha);
         this.persona = persona;
-        this.profecion = profecion;
+        this.profesion = profecion;
         this.ocupacion = ocupacion;
     }
 
@@ -29,8 +34,8 @@ public class CV extends Documento {
         return persona;
     }
 
-    public String getProfecion() {
-        return profecion;
+    public String getProfesion() {
+        return profesion;
     }
 
     public String getOcupacion() {
@@ -50,7 +55,7 @@ public class CV extends Documento {
     }
 
     public void setProfecion(String profecion) {
-        this.profecion = profecion;
+        this.profesion = profesion;
     }
 
     public void setOcupacion(String ocupacion) {
@@ -67,7 +72,7 @@ public class CV extends Documento {
 
     @Override
     public String toString() {
-        return "CV{" + "persona=" + persona + ", profecion=" + profecion + ", ocupacion=" + ocupacion + '}';
+        return "CV{" + "persona=" + persona + ", profesion=" + profesion + ", ocupacion=" + ocupacion + '}';
     }
 
     @Override

@@ -22,10 +22,10 @@ public class Test {
         Date fecha;
         
         fecha = objSDF.parse("07-08-2021");
-        Persona c1 = new Persona(1, "Pedro", "pp@gmail.com");
-        Producto p1 = new Producto(100, "Mouse BT");
-        Factura f1 = new Factura(555, fecha, c1, p1, 4);
-        f1.imprimir();
+        //Persona c1 = new Persona(1, "Pedro", "pp@gmail.com");
+        //Producto p1 = new Producto(100, "Mouse BT");
+        //Factura f1 = new Factura(555, fecha, c1, p1, 4);
+        //f1.imprimir();
          
      }
     
