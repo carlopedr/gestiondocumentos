@@ -12,13 +12,12 @@ import java.util.Date;
  * @author Usuario
  */
 public class Persona {
-    private double id;
+   private double id;
     private String nombre;
     private String email;
     private Date fechaNacimiento;
     private String direccion;
     private Organizacion eps;
-    
 
     public Persona() {
     }
@@ -93,6 +92,6 @@ public class Persona {
         return sb.toString();
     }
 
-  
+    
         
 }

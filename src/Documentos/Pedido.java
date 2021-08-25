@@ -13,7 +13,7 @@ import java.util.Date;
 
 /**
  *
- * @author Libardo
+ * @author Usuario
  */
 public class Pedido extends Documento{
     private int numero;
@@ -23,6 +23,10 @@ public class Pedido extends Documento{
     private Date fechaFac;
     private float descuentos;
     private float impuestos;
+
+    public Pedido(int id, Date fecha) {
+        super(id, fecha);
+    }
 
     public Pedido(int numero, Organizacion proveedor, Persona vendedor, float valor, Date fechaFac, float descuentos, float impuestos, int id, Date fecha) {
         super(id, fecha);
@@ -107,12 +111,25 @@ public class Pedido extends Documento{
         this.fecha = fecha;
     }
 
-    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pedido{numero=").append(numero);
+        sb.append(", proveedor=").append(proveedor);
+        sb.append(", vendedor=").append(vendedor);
+        sb.append(", valor=").append(valor);
+        sb.append(", fechaFac=").append(fechaFac);
+        sb.append(", descuentos=").append(descuentos);
+        sb.append(", impuestos=").append(impuestos);
+        sb.append('}');
+        return sb.toString();
+    }
+
     @Override
     public void imprimir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
-    
 
+    
+    
 }

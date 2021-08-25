@@ -8,12 +8,11 @@ package Documentos;
 import Basicos.Documento;
 import Basicos.Organizacion;
 import Basicos.Persona;
-import Basicos.Producto;
 import java.util.Date;
 
 /**
  *
- * @author Luis Miguel
+ * @author Usuario
  */
 public class Factura extends Documento{
     
@@ -29,10 +28,10 @@ public class Factura extends Documento{
         super(id, fecha);
     }
 
-    public Factura(int numero, Organizacion org, Persona cliente, float valor, Date fechaFac, float descuentos, float impuestos, int id, Date fecha) {
+    public Factura(int numero, Organizacion orgCliente, Persona cliente, float valor, Date fechaFac, float descuentos, float impuestos, int id, Date fecha) {
         super(id, fecha);
         this.numero = numero;
-        this.orgCliente = org;
+        this.orgCliente = orgCliente;
         this.cliente = cliente;
         this.valor = valor;
         this.fechaFac = fechaFac;
@@ -44,7 +43,9 @@ public class Factura extends Documento{
         return numero;
     }
 
-    
+    public Organizacion getOrgCliente() {
+        return orgCliente;
+    }
 
     public Persona getCliente() {
         return cliente;
@@ -78,7 +79,9 @@ public class Factura extends Documento{
         this.numero = numero;
     }
 
-    
+    public void setOrgCliente(Organizacion orgCliente) {
+        this.orgCliente = orgCliente;
+    }
 
     public void setCliente(Persona cliente) {
         this.cliente = cliente;
@@ -108,13 +111,28 @@ public class Factura extends Documento{
         this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Factura{numero=").append(numero);
+        sb.append(", orgCliente=").append(orgCliente);
+        sb.append(", cliente=").append(cliente);
+        sb.append(", valor=").append(valor);
+        sb.append(", fechaFac=").append(fechaFac);
+        sb.append(", descuentos=").append(descuentos);
+        sb.append(", impuestos=").append(impuestos);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    
     
     
     @Override
     public void imprimir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     
        
 }

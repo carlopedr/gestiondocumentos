@@ -23,11 +23,19 @@ public class CV extends Documento {
     private Organizacion ultimaEmpresa;
     private Date fechaRetiro;
 
-    public CV(Persona persona, String profecion, String ocupacion, int id, Date fecha) {
+    public CV(int id, Date fecha) {
+        super(id, fecha);
+    }
+
+    public CV(Persona persona, String profesion, String ocupacion, int mesesExp, String nivelEd, Organizacion ultimaEmpresa, Date fechaRetiro, int id, Date fecha) {
         super(id, fecha);
         this.persona = persona;
-        this.profesion = profecion;
+        this.profesion = profesion;
         this.ocupacion = ocupacion;
+        this.mesesExp = mesesExp;
+        this.nivelEd = nivelEd;
+        this.ultimaEmpresa = ultimaEmpresa;
+        this.fechaRetiro = fechaRetiro;
     }
 
     public Persona getPersona() {
@@ -42,6 +50,22 @@ public class CV extends Documento {
         return ocupacion;
     }
 
+    public int getMesesExp() {
+        return mesesExp;
+    }
+
+    public String getNivelEd() {
+        return nivelEd;
+    }
+
+    public Organizacion getUltimaEmpresa() {
+        return ultimaEmpresa;
+    }
+
+    public Date getFechaRetiro() {
+        return fechaRetiro;
+    }
+
     public int getId() {
         return id;
     }
@@ -49,17 +73,33 @@ public class CV extends Documento {
     public Date getFecha() {
         return fecha;
     }
-/////////////////////////////////////////////////////////
+
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
 
-    public void setProfecion(String profecion) {
+    public void setProfesion(String profesion) {
         this.profesion = profesion;
     }
 
     public void setOcupacion(String ocupacion) {
         this.ocupacion = ocupacion;
+    }
+
+    public void setMesesExp(int mesesExp) {
+        this.mesesExp = mesesExp;
+    }
+
+    public void setNivelEd(String nivelEd) {
+        this.nivelEd = nivelEd;
+    }
+
+    public void setUltimaEmpresa(Organizacion ultimaEmpresa) {
+        this.ultimaEmpresa = ultimaEmpresa;
+    }
+
+    public void setFechaRetiro(Date fechaRetiro) {
+        this.fechaRetiro = fechaRetiro;
     }
 
     public void setId(int id) {
@@ -72,9 +112,19 @@ public class CV extends Documento {
 
     @Override
     public String toString() {
-        return "CV{" + "persona=" + persona + ", profesion=" + profesion + ", ocupacion=" + ocupacion + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("CV{persona=").append(persona);
+        sb.append(", profesion=").append(profesion);
+        sb.append(", ocupacion=").append(ocupacion);
+        sb.append(", mesesExp=").append(mesesExp);
+        sb.append(", nivelEd=").append(nivelEd);
+        sb.append(", ultimaEmpresa=").append(ultimaEmpresa);
+        sb.append(", fechaRetiro=").append(fechaRetiro);
+        sb.append('}');
+        return sb.toString();
     }
 
+    
     @Override
     public void imprimir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -13,7 +13,7 @@ import java.util.List;
  * @author Usuario
  */
 public interface IPersonaDAO {
-    //CRUD: Create, Read, Update, Delete
+    
     public List<Persona> listPersona();
 
     public Persona obtenerPersona(double id);

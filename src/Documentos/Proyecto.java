@@ -5,10 +5,22 @@
  */
 package Documentos;
 
+import Basicos.Documento;
+import java.util.Date;
+
 /**
  *
  * @author Usuario
  */
-public class Proyecto {
+public class Proyecto extends Documento {
+
+    public Proyecto(int id, Date fecha) {
+        super(id, fecha);
+    }
+
+    @Override
+    public void imprimir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

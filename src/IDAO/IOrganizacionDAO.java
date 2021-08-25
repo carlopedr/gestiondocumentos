@@ -5,10 +5,19 @@
  */
 package IDAO;
 
+import Basicos.Organizacion;
+import java.util.List;
+
 /**
  *
  * @author Usuario
  */
 public interface IOrganizacionDAO {
+    public List<Organizacion> listOrganizacion();
+
+    public Organizacion obtenerOrganizacion(double id);
+
+    public void insertarOrganizacion(Organizacion organizacion);
     
+    public void actualizarOrganizacion(Organizacion organizacion);
 }
