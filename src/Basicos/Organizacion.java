@@ -5,25 +5,26 @@
  */
 package Basicos;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author Usuario
  */
 public class Organizacion {
- private int id;
+
+    private int id;
     private String nombre;
     private Persona repLegal;
     private String direccion;
     private String email;
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
     private String tipo;
 
     public Organizacion() {
     } 
 
-    public Organizacion(int id, String nombre, Persona repLegal, String direccion, String email, Date fechaCreacion, String tipo) {
+    public Organizacion(int id, String nombre, Persona repLegal, String direccion, String email, LocalDate fechaCreacion, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.repLegal = repLegal;
@@ -53,7 +54,7 @@ public class Organizacion {
         return email;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
@@ -81,7 +82,7 @@ public class Organizacion {
         this.email = email;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 

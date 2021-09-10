@@ -6,7 +6,7 @@
 package Documentos;
 
 import Basicos.Documento;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Proyecto extends Documento {
 
-    public Proyecto(int id, Date fecha) {
+    public Proyecto(int id, LocalDate fecha) {
         super(id, fecha);
     }
 

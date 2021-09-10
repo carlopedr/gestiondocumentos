@@ -5,7 +5,8 @@
  */
 package Basicos;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 /**
  *
@@ -13,9 +14,9 @@ import java.util.Date;
  */
 public abstract class Documento {
     protected int id; //Consecutivo
-    protected Date fecha; //Fecha de registro
+    protected LocalDate fecha; //Fecha de registro
 
-    public Documento(int id, Date fecha) {
+    public Documento(int id, LocalDate fecha) {
         this.id = id;
         this.fecha = fecha;
     }
@@ -24,7 +25,7 @@ public abstract class Documento {
         return id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
@@ -32,7 +33,7 @@ public abstract class Documento {
         this.id = id;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     

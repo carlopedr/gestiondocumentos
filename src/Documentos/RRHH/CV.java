@@ -8,7 +8,7 @@ package Documentos.RRHH;
 import Basicos.Documento;
 import Basicos.Organizacion;
 import Basicos.Persona;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -21,13 +21,13 @@ public class CV extends Documento {
     private int mesesExp;
     private String nivelEd;
     private Organizacion ultimaEmpresa;
-    private Date fechaRetiro;
+    private LocalDate fechaRetiro;
 
-    public CV(int id, Date fecha) {
+    public CV(int id, LocalDate fecha) {
         super(id, fecha);
     }
 
-    public CV(Persona persona, String profesion, String ocupacion, int mesesExp, String nivelEd, Organizacion ultimaEmpresa, Date fechaRetiro, int id, Date fecha) {
+    public CV(Persona persona, String profesion, String ocupacion, int mesesExp, String nivelEd, Organizacion ultimaEmpresa, LocalDate fechaRetiro, int id, LocalDate fecha) {
         super(id, fecha);
         this.persona = persona;
         this.profesion = profesion;
@@ -62,7 +62,7 @@ public class CV extends Documento {
         return ultimaEmpresa;
     }
 
-    public Date getFechaRetiro() {
+    public LocalDate getFechaRetiro() {
         return fechaRetiro;
     }
 
@@ -70,7 +70,7 @@ public class CV extends Documento {
         return id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
@@ -98,7 +98,7 @@ public class CV extends Documento {
         this.ultimaEmpresa = ultimaEmpresa;
     }
 
-    public void setFechaRetiro(Date fechaRetiro) {
+    public void setFechaRetiro(LocalDate fechaRetiro) {
         this.fechaRetiro = fechaRetiro;
     }
 
@@ -106,7 +106,7 @@ public class CV extends Documento {
         this.id = id;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
