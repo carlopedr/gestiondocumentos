@@ -6,7 +6,7 @@
 package Documentos;
 
 import Basicos.Documento;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.time.LocalDate;
  */
 public class Comunicacion extends Documento{
 
-    public Comunicacion(int id, LocalDate fecha) {
+    public Comunicacion(int id, Date fecha) {
         super(id, fecha);
     }
 

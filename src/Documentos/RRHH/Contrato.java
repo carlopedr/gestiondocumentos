@@ -7,7 +7,7 @@ package Documentos.RRHH;
 
 import Basicos.Documento;
 import Basicos.Persona;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -18,15 +18,15 @@ public class Contrato extends Documento{
     protected Persona empleado;
     protected String cargo;
     protected double sueldo;
-    protected LocalDate fechaIngreso;
+    protected Date fechaIngreso;
     protected String tipoContrato;
-    protected LocalDate fechaVence;
+    protected Date fechaVence;
 
-    public Contrato(int id, LocalDate fecha) {
+    public Contrato(int id, Date fecha) {
         super(id, fecha);
     }
 
-    public Contrato(Persona empleado, String cargo, double sueldo, LocalDate fechaIngreso, String tipoContrato, LocalDate fechaVence, int id, LocalDate fecha) {
+    public Contrato(Persona empleado, String cargo, double sueldo, Date fechaIngreso, String tipoContrato, Date fechaVence, int id, Date fecha) {
         super(id, fecha);
         this.empleado = empleado;
         this.cargo = cargo;
@@ -48,7 +48,7 @@ public class Contrato extends Documento{
         return sueldo;
     }
 
-    public LocalDate getFechaIngreso() {
+    public Date getFechaIngreso() {
         return fechaIngreso;
     }
 
@@ -56,7 +56,7 @@ public class Contrato extends Documento{
         return tipoContrato;
     }
 
-    public LocalDate getFechaVence() {
+    public Date getFechaVence() {
         return fechaVence;
     }
 
@@ -64,7 +64,7 @@ public class Contrato extends Documento{
         return id;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
@@ -80,7 +80,7 @@ public class Contrato extends Documento{
         this.sueldo = sueldo;
     }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {
+    public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
@@ -88,7 +88,7 @@ public class Contrato extends Documento{
         this.tipoContrato = tipoContrato;
     }
 
-    public void setFechaVence(LocalDate fechaVence) {
+    public void setFechaVence(Date fechaVence) {
         this.fechaVence = fechaVence;
     }
 
@@ -96,7 +96,7 @@ public class Contrato extends Documento{
         this.id = id;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

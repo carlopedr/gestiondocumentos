@@ -5,7 +5,7 @@
  */
 package Basicos;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -15,14 +15,14 @@ public class Persona {
    private double id;
     private String nombre;
     private String email;
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
     private String direccion;
     private Organizacion eps;
 
     public Persona() {
     }
 
-    public Persona(double id, String nombre, String email, LocalDate fechaNacimiento, String direccion, Organizacion eps) {
+    public Persona(double id, String nombre, String email, Date fechaNacimiento, String direccion, Organizacion eps) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
@@ -43,7 +43,7 @@ public class Persona {
         return email;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -67,7 +67,7 @@ public class Persona {
         this.email = email;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

@@ -9,7 +9,7 @@ import Basicos.Documento;
 import Basicos.Organizacion;
 import Basicos.Persona;
 import Basicos.Producto;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -20,15 +20,15 @@ public class Pedido extends Documento{
     private Organizacion proveedor;
     protected Persona vendedor;
     private float valor;
-    private LocalDate fechaFac;
+    private Date fechaFac;
     private float descuentos;
     private float impuestos;
 
-    public Pedido(int id, LocalDate fecha) {
+    public Pedido(int id, Date fecha) {
         super(id, fecha);
     }
 
-    public Pedido(int numero, Organizacion proveedor, Persona vendedor, float valor, LocalDate fechaFac, float descuentos, float impuestos, int id, LocalDate fecha) {
+    public Pedido(int numero, Organizacion proveedor, Persona vendedor, float valor, Date fechaFac, float descuentos, float impuestos, int id, Date fecha) {
         super(id, fecha);
         this.numero = numero;
         this.proveedor = proveedor;
@@ -55,7 +55,7 @@ public class Pedido extends Documento{
         return valor;
     }
 
-    public LocalDate getFechaFac() {
+    public Date getFechaFac() {
         return fechaFac;
     }
 
@@ -71,7 +71,7 @@ public class Pedido extends Documento{
         return id;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
@@ -91,7 +91,7 @@ public class Pedido extends Documento{
         this.valor = valor;
     }
 
-    public void setFechaFac(LocalDate fechaFac) {
+    public void setFechaFac(Date fechaFac) {
         this.fechaFac = fechaFac;
     }
 
@@ -107,7 +107,7 @@ public class Pedido extends Documento{
         this.id = id;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
