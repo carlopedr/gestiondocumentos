@@ -8,7 +8,7 @@ package Documentos;
 import Basicos.Documento;
 import Basicos.Organizacion;
 import Basicos.Persona;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -20,15 +20,15 @@ public class Cotizacion extends Documento{
     private Organizacion empresa;
     private Persona interesado;
     private float valor;
-    private Date fechaCot;
+    private LocalDate fechaCot;
     private float descuentos;
     private float impuestos;
 
-    public Cotizacion(int id, Date fecha) {
+    public Cotizacion(int id, LocalDate fecha) {
         super(id, fecha);
     }
 
-    public Cotizacion(int numero, Organizacion empresa, Persona interesado, float valor, Date fechaCot, float descuentos, float impuestos, int id, Date fecha) {
+    public Cotizacion(int numero, Organizacion empresa, Persona interesado, float valor, LocalDate fechaCot, float descuentos, float impuestos, int id, LocalDate fecha) {
         super(id, fecha);
         this.numero = numero;
         this.empresa = empresa;
@@ -55,7 +55,7 @@ public class Cotizacion extends Documento{
         return valor;
     }
 
-    public Date getFechaCot() {
+    public LocalDate getFechaCot() {
         return fechaCot;
     }
 
@@ -71,7 +71,7 @@ public class Cotizacion extends Documento{
         return id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
@@ -91,7 +91,7 @@ public class Cotizacion extends Documento{
         this.valor = valor;
     }
 
-    public void setFechaCot(Date fechaCot) {
+    public void setFechaCot(LocalDate fechaCot) {
         this.fechaCot = fechaCot;
     }
 
@@ -107,7 +107,7 @@ public class Cotizacion extends Documento{
         this.id = id;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
