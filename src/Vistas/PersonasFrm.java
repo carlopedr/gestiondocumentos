@@ -5,17 +5,105 @@
  */
 package Vistas;
 
+import Basicos.Organizacion;
+import Basicos.Persona;
+import DAO.OrganizacionDAO;
+import DAO.PersonaDAO;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
  */
 public class PersonasFrm extends javax.swing.JFrame {
-
+    List<Organizacion> listorg;
+    //0 - Creación
+    //1 - Actualización
+    int origen;
     /**
      * Creates new form PersonasFrm
      */
     public PersonasFrm() {
         initComponents();
+        this.origen=0;
+        //Se usa para centrar la forma en la pantalla
+        this.setLocationRelativeTo(null);
+        cargarEPS();
+        
+
+    }
+    //Constructor para modo Actualización
+    public PersonasFrm(Persona pUp) {
+        initComponents();
+        this.origen=1;
+        this.setLocationRelativeTo(null);
+        funLabel.setText("Actualización");
+        actBtn.setEnabled(true);
+        guardarDatos.setEnabled(false);
+        limpiarForma.setEnabled(false);
+        Double id=pUp.getId();
+        idTxt.setEnabled(false);
+        idTxt.setText(id.toString());
+        nombreTxt.setText(pUp.getNombre());
+        emailTxt.setText(pUp.getEmail());
+        direccionTxt.setText(pUp.getDireccion());
+        // Creating the LocalDatetime object
+        LocalDate currentLocalDate = pUp.getFechaNacimiento();
+        // Getting system timezone
+        ZoneId systemTimeZone = ZoneId.systemDefault();
+        // converting LocalDateTime to ZonedDateTime with the system timezone
+        ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);
+        // converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
+        Date utilDate = Date.from(zonedDateTime.toInstant());
+        fechaNacjDC.setDate(utilDate);
+        //epsCmB 
+        epsActTxt.setText(pUp.getEps().getNombre());
+        selectEpsLbl.setVisible(true);
+        selectEpsLbl.setEnabled(true);
+        cargarEPS();
+        int i = 0;
+        int idx = 0;
+        for (Organizacion eps : listorg) {
+            if (eps.getId() == pUp.getEps().getId())
+                idx = i;
+            i++;
+        }
+        epsCmB.setSelectedIndex(idx);
+    }
+    //Método para cargar EPS en el campo epsCmB
+    public void cargarEPS() {
+        //Cargar EPS desde Orgs
+        OrganizacionDAO orgdao = new OrganizacionDAO();
+        this.listorg = orgdao.listOrganizacion();
+        //Clases anónimas para ordenar de forma ascendente
+        //la lista de organizaciones por el atributo nombre
+        Collections.sort(listorg, new Comparator<Organizacion>() {
+            @Override
+            public int compare(Organizacion o1, Organizacion o2) {
+                return o1.getNombre().compareToIgnoreCase(o2.getNombre());
+            }
+        });
+        Iterator<Organizacion> iter = listorg.iterator();
+        Organizacion o;
+        //System.out.println("Listado Personas");
+        while (iter.hasNext()) {
+            o = iter.next();
+            if (o.getTipo().compareToIgnoreCase("EPS") == 0) {
+                epsCmB.addItem(o.getNombre());
+            } else {
+                iter.remove();
+            }
+        }
+
     }
 
     /**
@@ -27,21 +115,371 @@ public class PersonasFrm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< Updated upstream
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+=======
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        idTxt = new javax.swing.JTextField();
+        nombreTxt = new javax.swing.JTextField();
+        emailTxt = new javax.swing.JTextField();
+        direccionTxt = new javax.swing.JTextField();
+        epsCmB = new javax.swing.JComboBox<>();
+        fechaNacjDC = new com.toedter.calendar.JDateChooser();
+        epsActTxt = new javax.swing.JTextField();
+        selectEpsLbl = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        guardarDatos = new javax.swing.JButton();
+        limpiarForma = new javax.swing.JButton();
+        cerrarForma = new javax.swing.JButton();
+        actBtn = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        funLabel = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanel1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jLabel2.setText("No. Identificación");
+
+        jLabel3.setText("Nombre");
+
+        jLabel4.setText("Correo electrónico");
+
+        jLabel5.setText("Fecha nacimiento");
+
+        jLabel6.setText("Dirección ");
+
+        jLabel7.setText("EPS Actual");
+
+        epsCmB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                epsCmBActionPerformed(evt);
+            }
+        });
+
+        fechaNacjDC.setMinimumSize(new java.awt.Dimension(40, 20));
+
+        epsActTxt.setEnabled(false);
+
+        selectEpsLbl.setText("Seleccione la nueva EPS:");
+        selectEpsLbl.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(direccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fechaNacjDC, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(epsActTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectEpsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(epsCmB, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
+                    .addComponent(fechaNacjDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(direccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addComponent(selectEpsLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(epsActTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(epsCmB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        guardarDatos.setText("Guardar");
+        guardarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarDatosActionPerformed(evt);
+            }
+        });
+
+        limpiarForma.setText("Limpiar");
+        limpiarForma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarFormaActionPerformed(evt);
+            }
+        });
+
+        cerrarForma.setText("Cerrar");
+        cerrarForma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarFormaActionPerformed(evt);
+            }
+        });
+
+        actBtn.setText("Actualizar");
+        actBtn.setEnabled(false);
+        actBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(guardarDatos)
+                .addGap(33, 33, 33)
+                .addComponent(actBtn)
+                .addGap(36, 36, 36)
+                .addComponent(limpiarForma)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrarForma, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarDatos)
+                    .addComponent(limpiarForma)
+                    .addComponent(cerrarForma)
+                    .addComponent(actBtn))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(0, 0, 153));
+        jPanel4.setForeground(new java.awt.Color(0, 0, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 51));
+        jLabel1.setText("Gestion de Personas");
+
+        funLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        funLabel.setForeground(new java.awt.Color(204, 204, 0));
+        funLabel.setText("Edición");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(funLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(112, 112, 112))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(funLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+>>>>>>> Stashed changes
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< Updated upstream
             .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
+=======
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void epsCmBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_epsCmBActionPerformed
+        // TODO add your handling code here:
+        
+
+        
+    }//GEN-LAST:event_epsCmBActionPerformed
+
+    private void jPanel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1AncestorAdded
+
+    private void cerrarFormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarFormaActionPerformed
+        // TODO add your handling code here:
+        if (this.origen==0)
+            System.exit(0);
+        else{
+            PersonasLstFrm perLstFrm = new PersonasLstFrm();
+            perLstFrm.setVisible(true);
+        }
+    }//GEN-LAST:event_cerrarFormaActionPerformed
+
+    private void guardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDatosActionPerformed
+        Persona p= new Persona();
+        p.setId(Float.parseFloat(idTxt.getText()));
+        p.setNombre(nombreTxt.getText());
+        p.setEmail(emailTxt.getText());
+        Date fnc=fechaNacjDC.getDate();
+        System.out.println(fnc);
+        //Getting the default zone id
+	ZoneId defaultZoneId = ZoneId.systemDefault();
+	//Converting the date to Instant
+	Instant instant = fnc.toInstant();
+	//Converting the Date to LocalDate
+	LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
+	p.setFechaNacimiento(localDate);
+        p.setDireccion(direccionTxt.getText());
+        int idx=epsCmB.getSelectedIndex();
+        Organizacion eps=listorg.get(idx);
+        p.setEps(eps);
+        PersonaDAO perdao=new PersonaDAO();
+        try{
+            perdao.insertarPersona(p);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    
+    }//GEN-LAST:event_guardarDatosActionPerformed
+
+    private void limpiarFormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarFormaActionPerformed
+        // TODO add your handling code here:
+        int idx=epsCmB.getSelectedIndex();
+        System.out.println(idx);
+        Organizacion eps=listorg.get(idx);
+        System.out.println(eps.toString());
+    }//GEN-LAST:event_limpiarFormaActionPerformed
+
+    private void actBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actBtnActionPerformed
+        // TODO add your handling code here:
+        Persona p= new Persona();
+        p.setId(Float.parseFloat(idTxt.getText()));
+        p.setNombre(nombreTxt.getText());
+        p.setEmail(emailTxt.getText());
+        Date fnc=fechaNacjDC.getDate();
+        System.out.println(fnc);
+        //Getting the default zone id
+	ZoneId defaultZoneId = ZoneId.systemDefault();
+	//Converting the date to Instant
+	Instant instant = fnc.toInstant();
+	//Converting the Date to LocalDate
+	LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
+	p.setFechaNacimiento(localDate);
+        p.setDireccion(direccionTxt.getText());
+        int idx=epsCmB.getSelectedIndex();
+        Organizacion eps=listorg.get(idx);
+        p.setEps(eps);
+        PersonaDAO perdao=new PersonaDAO();
+        try{
+            perdao.actualizarPersona(p);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        //perdao.actualizarPersona(pAct);
+    }//GEN-LAST:event_actBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,10 +512,38 @@ public class PersonasFrm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PersonasFrm().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JButton actBtn;
+    private javax.swing.JButton cerrarForma;
+    private javax.swing.JTextField direccionTxt;
+    private javax.swing.JTextField emailTxt;
+    private javax.swing.JTextField epsActTxt;
+    private javax.swing.JComboBox<String> epsCmB;
+    private com.toedter.calendar.JDateChooser fechaNacjDC;
+    private javax.swing.JLabel funLabel;
+    private javax.swing.JButton guardarDatos;
+    private javax.swing.JTextField idTxt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton limpiarForma;
+    private javax.swing.JTextField nombreTxt;
+    private javax.swing.JLabel selectEpsLbl;
+>>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,10 @@ package Basicos;
  * @author Usuario
  */
 public class Persona {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     private double id;
     private String nombre;
     private String email;
